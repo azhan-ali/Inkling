@@ -1,9 +1,11 @@
 /**
  * Inkling — shared TypeScript types.
  *
- * The full Zod schema lives in `lib/schema.ts` (added in Phase 1).
- * This file is the public contract between API, server, and UI.
+ * InklingOutput is now derived from the Zod schema so the type and
+ * runtime validation are always in sync.
  */
+
+import type { OutputSchema } from "@/lib/schema";
 
 export type CommunicationStyle = "degen" | "builder" | "founder";
 
@@ -23,14 +25,8 @@ export interface InklingInputs {
   communicationStyle: CommunicationStyle;
 }
 
-/**
- * Placeholder for the full AI output shape.
- * Phase 1 replaces this with the Zod-inferred type.
- */
-export interface InklingOutput {
-  // filled in Phase 1
-  [key: string]: unknown;
-}
+/** Full AI output — 7 sections. Derived from Zod schema for single source of truth. */
+export type InklingOutput = OutputSchema;
 
 export interface GenerationRecord {
   id: string;
