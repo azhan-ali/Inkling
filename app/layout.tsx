@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ToastProvider } from "@/components/shared/Toast";
+import { InkCursor } from "@/components/shared/InkCursor";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://inkling.vercel.app"),
@@ -74,6 +75,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body className="min-h-full flex flex-col paper-bg font-body text-ink">
+        <InkCursor />
         <ToastProvider>
 
           {/* ── Global background decorations ── */}
