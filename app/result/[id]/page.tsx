@@ -10,14 +10,11 @@ export default async function ResultPage({
   return (
     <>
       <Header />
-      <main className="flex-1 flex items-center justify-center pt-16 p-8">
-        <div className="text-center">
-          <p className="text-4xl font-bold gradient-text mb-3">
-            Result: {id}
-          </p>
-          <p className="text-muted">
-            7-section strategy output will be displayed here in Phase 5.
-          </p>
+      <main className="flex-1 flex items-center justify-center p-8">
+        <div className="sketch-card bg-card-blue p-10 text-center max-w-md">
+          <p className="text-4xl mb-3">🗺️</p>
+          <h1 className="font-comic text-4xl text-ink mb-2">Result: {id}</h1>
+          <p className="font-body text-pencil">7-section strategy output — Phase 5.</p>
         </div>
       </main>
       <Footer />

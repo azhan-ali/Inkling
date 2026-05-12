@@ -2,285 +2,271 @@ import Link from "next/link";
 import { Header } from "@/components/shared/Header";
 import { Footer } from "@/components/shared/Footer";
 import {
-  Compass,
-  Clock,
-  Map,
-  Swords,
-  BookOpen,
-  Zap,
-  Users,
-  ArrowRight,
-  Sparkles,
-  Target,
-  Pen,
-  CheckCircle2,
-  XCircle,
-  Rocket,
+  Compass, Clock, Map, Swords, BookOpen, Zap, Users,
+  ArrowRight, Sparkles, Target, Pen, CheckCircle2, XCircle,
+  Rocket, Star, Zap as Lightning,
 } from "lucide-react";
 
-// ---------------------------------------------------------------------------
-// Data
-// ---------------------------------------------------------------------------
-
+/* ------------------------------------------------------------------ */
+/*  Feature cards — pastel colors like SaathPay                        */
+/* ------------------------------------------------------------------ */
 const features = [
   {
     icon: Compass,
     title: "Narrative Archetype",
-    description: "Discover your identity — Underdog, Infrastructure, Culture Shift, or Pioneer. With threat assessment.",
-    color: "from-purple-500/20 to-purple-900/10",
-    iconColor: "text-purple-400",
+    desc: "Assigns your identity — Underdog, Infrastructure, Culture Shift, or Pioneer. Includes threat assessment and your One Truth.",
+    bg: "bg-card-yellow",
+    iconBg: "bg-marker-yellow",
   },
   {
     icon: Clock,
     title: "Week Zero Kit",
-    description: "Hour-by-hour 48hr action plan with copy-paste posts. Execute before momentum dies.",
-    color: "from-cyan-500/20 to-cyan-900/10",
-    iconColor: "text-cyan-400",
+    desc: "Hour-by-hour 48hr action plan with copy-paste posts. Execute before momentum dies.",
+    bg: "bg-card-pink",
+    iconBg: "bg-marker-pink",
   },
   {
     icon: Map,
     title: "Insertion Points Map",
-    description: "3 live Solana debates + pre-written replies + risk levels + optimal timing windows.",
-    color: "from-blue-500/20 to-blue-900/10",
-    iconColor: "text-blue-400",
+    desc: "3 live Solana debates + pre-written replies + risk levels + optimal timing windows.",
+    bg: "bg-card-blue",
+    iconBg: "bg-marker-blue",
   },
   {
     icon: Swords,
     title: "Rivalry Radar",
-    description: "How competitors will position. Your counter-strategy. Your unfair narrative advantage.",
-    color: "from-red-500/20 to-red-900/10",
-    iconColor: "text-red-400",
+    desc: "How competitors will position. Your counter-strategy. Your unfair narrative advantage.",
+    bg: "bg-card-orange",
+    iconBg: "bg-marker-orange",
   },
   {
     icon: BookOpen,
     title: "3 Origin Stories",
-    description: "Same story in Degen, Builder, and Founder voice. Pick what fits. Ready to post.",
-    color: "from-emerald-500/20 to-emerald-900/10",
-    iconColor: "text-emerald-400",
+    desc: "Same story in Degen, Builder, and Founder voice. Pick what fits. Ready to post.",
+    bg: "bg-card-purple",
+    iconBg: "bg-marker-purple",
   },
   {
     icon: Zap,
     title: "Viral Thread Pack",
-    description: "2 complete 7-tweet threads (Hook-Proof-Pull) + 5 standalone posts + your hashtag.",
-    color: "from-amber-500/20 to-amber-900/10",
-    iconColor: "text-amber-400",
+    desc: "2 complete 7-tweet threads (Hook-Proof-Pull) + 5 standalone posts + your hashtag.",
+    bg: "bg-card-green",
+    iconBg: "bg-marker-green",
   },
   {
     icon: Users,
     title: "Ecosystem Ally Finder",
-    description: "5 builders to collaborate with, cross-promo angles, and non-pitchy approach scripts.",
-    color: "from-pink-500/20 to-pink-900/10",
-    iconColor: "text-pink-400",
+    desc: "5 builders to collaborate with, cross-promo angles, and non-pitchy approach scripts.",
+    bg: "bg-card-mint",
+    iconBg: "bg-marker-teal",
   },
 ];
 
+/* ------------------------------------------------------------------ */
+/*  Steps                                                              */
+/* ------------------------------------------------------------------ */
 const steps = [
-  { num: "01", emoji: "📝", title: "Fill 7 Fields", desc: "Project name, one-liner, tech stack, target user, team, fear, and style." },
-  { num: "02", emoji: "🧠", title: "AI Analyzes", desc: "Archetype scoring, ecosystem mapping, rivalry detection, tone calibration." },
-  { num: "03", emoji: "⚡", title: "Strategy Generated", desc: "Complete 7-section war room in under 60 seconds." },
-  { num: "04", emoji: "🎯", title: "Post & Insert", desc: "Origin story live in 6 hours. Insertion points hit in 12 hours." },
-  { num: "05", emoji: "📈", title: "Compound Signal", desc: "4-week battle plan. Every post builds on the last." },
-  { num: "06", emoji: "🚀", title: "Become Visible", desc: "From invisible builder to ecosystem voice." },
+  { num: 1, emoji: "📝", title: "Fill 7 Fields", desc: "Project name, one-liner, tech stack, target user, team, fear, and style. 3 minutes." },
+  { num: 2, emoji: "🧠", title: "AI Analyzes", desc: "Archetype scoring, ecosystem mapping, rivalry detection, tone calibration." },
+  { num: 3, emoji: "⚡", title: "Strategy Generated", desc: "Complete 7-section war room in under 60 seconds." },
+  { num: 4, emoji: "🎯", title: "Post Origin Story", desc: "Hour 0–6: Your story goes live before the momentum window closes." },
+  { num: 5, emoji: "💬", title: "Insert Into Debates", desc: "Pre-written replies hit targeted accounts at optimal times." },
+  { num: 6, emoji: "🚀", title: "Compound Your Signal", desc: "4-week battle plan. Every post builds on the last. Audience compounds." },
 ];
 
+/* ------------------------------------------------------------------ */
+/*  Comparison                                                         */
+/* ------------------------------------------------------------------ */
 const comparisons = [
-  { feature: "Strategy type", inkling: "Personalized war room", others: "Generic calendar" },
-  { feature: "Time to first post", inkling: "< 6 hours", others: "Days of planning" },
-  { feature: "Competitor awareness", inkling: "Rivalry Radar", others: "None" },
-  { feature: "Ecosystem intelligence", inkling: "Live Solana data", others: "Generic advice" },
-  { feature: "Content quality", inkling: "Copy-paste ready", others: "Templates" },
-  { feature: "Insertion strategy", inkling: "3 debates + replies", others: "Post 3x/week" },
-  { feature: "Retention", inkling: "Weekly Ally Refresh", others: "One-time use" },
-  { feature: "Built for Solana", inkling: "Native", others: "Generic" },
+  { feature: "Strategy type",       inkling: "Personalized war room",  others: "Generic content calendar" },
+  { feature: "Time to first post",  inkling: "< 6 hours",              others: "Days of planning" },
+  { feature: "Competitor awareness",inkling: "Rivalry Radar built-in", others: "None" },
+  { feature: "Ecosystem data",      inkling: "Live Solana intelligence",others: "Generic advice" },
+  { feature: "Content quality",     inkling: "Copy-paste ready",       others: "Templates only" },
+  { feature: "Insertion strategy",  inkling: "3 debates + replies",    others: "Post 3x a week" },
+  { feature: "Retention",           inkling: "Weekly Ally Refresh",    others: "One-time use" },
+  { feature: "Built for Solana",    inkling: "Native ecosystem data",  others: "Generic tool" },
 ];
 
-// ---------------------------------------------------------------------------
-// Page
-// ---------------------------------------------------------------------------
-
+/* ------------------------------------------------------------------ */
+/*  Page                                                               */
+/* ------------------------------------------------------------------ */
 export default function HomePage() {
   return (
     <>
       <Header />
-      <main className="flex-1 pt-16">
+      <main className="flex-1 relative z-10">
+
         {/* ===== HERO ===== */}
-        <section className="relative max-w-6xl mx-auto px-6 pt-24 pb-20 text-center">
-          {/* Decorative orbiting elements */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none opacity-30" aria-hidden="true">
-            <div className="orbit absolute top-1/2 left-1/2">
-              <div className="w-2 h-2 rounded-full bg-accent-light" />
-            </div>
-            <div className="orbit-reverse absolute top-1/2 left-1/2">
-              <div className="w-1.5 h-1.5 rounded-full bg-accent-cyan" />
-            </div>
-            <div className="orbit-slow absolute top-1/2 left-1/2">
-              <div className="w-1 h-1 rounded-full bg-accent-pink" />
-            </div>
-          </div>
+        <section className="relative max-w-5xl mx-auto px-6 pt-16 pb-20 text-center overflow-hidden">
+
+          {/* Floating doodles */}
+          <span className="doodle absolute top-8 left-8 text-4xl" style={{ animationDelay: "0s" }}>⭐</span>
+          <span className="doodle absolute top-16 right-12 text-3xl" style={{ animationDelay: "0.8s" }}>✦</span>
+          <span className="doodle absolute bottom-12 left-16 text-2xl" style={{ animationDelay: "1.2s" }}>♥</span>
+          <span className="doodle absolute top-24 right-6 text-5xl" style={{ animationDelay: "0.4s" }}>⚡</span>
+          <span className="doodle absolute bottom-8 right-20 text-3xl" style={{ animationDelay: "1.6s" }}>✿</span>
+
+          {/* Decorative circles */}
+          <div className="absolute top-10 right-24 w-12 h-12 rounded-full border-3 border-dashed border-marker-pink opacity-40 doodle-spin" />
+          <div className="absolute bottom-16 left-24 w-8 h-8 rounded-full border-2 border-dashed border-marker-blue opacity-30 doodle-spin" style={{ animationDuration: "18s" }} />
 
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-accent/20 bg-accent/5 text-sm text-accent-light mb-8 backdrop-blur-sm">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Colosseum × SagaPad Hackathon</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" />
+          <div className="inline-flex items-center gap-2 sketch-badge bg-card-yellow mb-8 fade-up">
+            <Sparkles className="w-4 h-4 text-marker-orange" />
+            <span>Built for Colosseum × SagaPad Hackathon</span>
           </div>
 
           {/* Headline */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.05] mb-6">
-            <span className="gradient-text-hero">
-              You Built It.
-            </span>
+          <h1 className="font-comic text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-ink leading-tight mb-4 fade-up delay-1">
+            You Built It.
             <br />
-            <span className="gradient-text-hero" style={{ animationDelay: "2s" }}>
-              We&apos;ll Ink The Story.
-            </span>
+            <span className="squiggle squiggle-yellow">We&apos;ll Ink</span>{" "}
+            The Story.
           </h1>
 
-          {/* Subtitle */}
-          <p className="text-lg sm:text-xl text-muted max-w-2xl mx-auto mb-10 leading-relaxed">
-            AI-powered narrative strategy engine for Solana hackathon builders.
-            <br className="hidden sm:block" />
-            <span className="text-foreground font-medium">7 inputs</span> →{" "}
-            <span className="text-foreground font-medium">complete war room</span> →{" "}
-            <span className="text-foreground font-medium">60 seconds</span>
+          {/* Subheadline */}
+          <p className="font-hand text-xl sm:text-2xl text-marker-orange mb-3 fade-up delay-2">
+            Narrative Strategy. Not Just Content.
+          </p>
+
+          <p className="font-body text-base sm:text-lg text-pencil max-w-2xl mx-auto mb-10 leading-relaxed fade-up delay-3">
+            AI-powered narrative engine for Solana hackathon builders.{" "}
+            <span className="highlight">7 inputs</span> →{" "}
+            complete war room in 60 seconds.{" "}
+            Built on Solana. Powered by Gemini AI.
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
-            <Link href="/forge" className="btn-primary inline-flex items-center gap-2 text-base">
-              <Rocket className="w-4 h-4" />
-              Forge Your Narrative
-              <ArrowRight className="w-4 h-4" />
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14 fade-up delay-4">
+            <Link href="/forge" className="btn-sketch btn-primary-sketch text-xl py-3 px-8">
+              <Rocket className="w-5 h-5" />
+              Start Forging →
             </Link>
-            <Link href="/#how" className="btn-secondary inline-flex items-center gap-2 text-base">
+            <Link href="/#how" className="btn-sketch btn-ghost-sketch text-xl py-3 px-8">
               See How It Works
             </Link>
           </div>
 
-          {/* Stats */}
-          <div className="glass-card inline-flex items-center gap-6 sm:gap-10 px-8 py-4 rounded-2xl">
-            <div className="text-center">
-              <p className="font-display text-2xl text-accent-light">7</p>
-              <p className="text-xs text-muted mt-0.5">Inputs</p>
-            </div>
-            <div className="w-px h-8 bg-white/10" />
-            <div className="text-center">
-              <p className="font-display text-2xl text-accent-cyan">7</p>
-              <p className="text-xs text-muted mt-0.5">Sections</p>
-            </div>
-            <div className="w-px h-8 bg-white/10" />
-            <div className="text-center">
-              <p className="font-display text-2xl text-accent-pink">&lt;60s</p>
-              <p className="text-xs text-muted mt-0.5">Generation</p>
-            </div>
-            <div className="w-px h-8 bg-white/10 hidden sm:block" />
-            <div className="text-center hidden sm:block">
-              <p className="font-display text-2xl text-success">100%</p>
-              <p className="text-xs text-muted mt-0.5">Copy-Paste</p>
-            </div>
+          {/* Stats row */}
+          <div className="flex flex-wrap items-center justify-center gap-4 fade-up delay-5">
+            {[
+              { val: "7", label: "inputs", bg: "bg-card-yellow" },
+              { val: "7", label: "strategy sections", bg: "bg-card-pink" },
+              { val: "<60s", label: "generation time", bg: "bg-card-blue" },
+              { val: "100%", label: "copy-paste ready", bg: "bg-card-green" },
+            ].map((s) => (
+              <div key={s.label} className={`stat-card ${s.bg} min-w-[110px]`}>
+                <p className="font-comic text-3xl text-ink">{s.val}</p>
+                <p className="font-body text-xs text-pencil mt-0.5">{s.label}</p>
+              </div>
+            ))}
           </div>
 
-          <p className="text-muted-foreground text-sm mt-10 animate-bounce">↓ scroll</p>
+          <p className="font-hand text-pencil text-sm mt-10 bounce-slow inline-block">
+            scroll down ↓
+          </p>
         </section>
 
         {/* ===== FEATURES ===== */}
-        <section id="features" className="max-w-6xl mx-auto px-6 py-24">
-          <div className="text-center mb-16">
-            <p className="section-label mb-4">Features</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-              <span className="gradient-text">7 Sections. One War Room.</span>
+        <section id="features" className="max-w-6xl mx-auto px-6 py-20">
+          <div className="text-center mb-14">
+            <p className="section-label mb-2">~ what makes us different ~</p>
+            <h2 className="font-comic text-4xl sm:text-5xl md:text-6xl text-ink mb-3">
+              Everything You Need.{" "}
+              <span className="highlight-pink">Nothing You Don&apos;t.</span>
             </h2>
-            <p className="text-muted max-w-xl mx-auto">
-              Every section is copy-paste ready. No editing required. Just execute.
+            <p className="font-body text-base text-pencil max-w-xl mx-auto">
+              7 sections designed to take you from invisible to unmissable in the Solana ecosystem.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 stagger">
-            {features.map((f) => (
-              <div key={f.title} className="glass-card p-6 fade-up">
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${f.color} flex items-center justify-center mb-4 border border-white/5`}>
-                  <f.icon className={`w-5 h-5 ${f.iconColor}`} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {features.map((f, i) => (
+              <div
+                key={f.title}
+                className={`sketch-card ${f.bg} p-6 fade-up`}
+                style={{ animationDelay: `${0.05 * i}s`, transform: `rotate(${i % 2 === 0 ? -0.5 : 0.5}deg)` }}
+              >
+                <div className={`w-11 h-11 rounded-full ${f.iconBg} border-2 border-ink flex items-center justify-center mb-4 sketch-shadow-sm`}>
+                  <f.icon className="w-5 h-5 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-foreground mb-2">
-                  {f.title}
-                </h3>
-                <p className="text-sm text-muted leading-relaxed">
-                  {f.description}
-                </p>
+                <h3 className="font-comic text-xl text-ink mb-2">{f.title}</h3>
+                <p className="font-body text-sm text-ink-soft leading-relaxed">{f.desc}</p>
               </div>
             ))}
           </div>
         </section>
 
         {/* ===== HOW IT WORKS ===== */}
-        <section id="how" className="max-w-4xl mx-auto px-6 py-24">
-          <div className="text-center mb-16">
-            <p className="section-label mb-4">Process</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-              <span className="gradient-text">Six Steps. Zero Headaches.</span>
+        <section id="how" className="max-w-4xl mx-auto px-6 py-20">
+          <div className="text-center mb-14">
+            <p className="section-label mb-2">~ how it works ~</p>
+            <h2 className="font-comic text-4xl sm:text-5xl md:text-6xl text-ink">
+              Six Steps.{" "}
+              <span className="squiggle">Zero Headaches.</span>
             </h2>
           </div>
 
-          <div className="space-y-4 stagger">
-            {steps.map((step) => (
-              <div key={step.num} className="glass-card p-5 flex items-center gap-5 fade-up">
-                <div className="flex items-center gap-4 shrink-0">
-                  <span className="font-display text-xs text-accent-light/50 w-6">
-                    {step.num}
-                  </span>
+          <div className="space-y-4">
+            {steps.map((step, i) => (
+              <div
+                key={step.num}
+                className={`sketch-card bg-white p-5 flex items-center gap-5 fade-up`}
+                style={{ animationDelay: `${0.1 * i}s` }}
+              >
+                <div className="flex items-center gap-3 shrink-0">
+                  <span className="font-comic text-pencil text-sm w-5">{step.num}</span>
                   <span className="text-2xl">{step.emoji}</span>
                 </div>
                 <div>
-                  <h3 className="text-base font-semibold text-foreground mb-0.5">
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-muted">{step.desc}</p>
+                  <h3 className="font-comic text-xl text-ink mb-0.5">{step.title}</h3>
+                  <p className="font-body text-sm text-pencil">{step.desc}</p>
                 </div>
               </div>
             ))}
           </div>
 
           <div className="text-center mt-10">
-            <Link href="/forge" className="inline-flex items-center gap-2 text-accent-light hover:text-foreground font-medium transition text-sm">
-              Try it yourself <ArrowRight className="w-3.5 h-3.5" />
+            <Link href="/forge" className="btn-sketch btn-secondary-sketch text-lg py-2.5 px-7">
+              Try it yourself <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </section>
 
         {/* ===== COMPARISON ===== */}
-        <section className="max-w-4xl mx-auto px-6 py-24">
-          <div className="text-center mb-16">
-            <p className="section-label mb-4">Comparison</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-              <span className="gradient-text">Inkling vs. The Old Way</span>
+        <section id="why" className="max-w-4xl mx-auto px-6 py-20">
+          <div className="text-center mb-14">
+            <p className="section-label mb-2">~ the honest comparison ~</p>
+            <h2 className="font-comic text-4xl sm:text-5xl md:text-6xl text-ink">
+              Inkling vs.{" "}
+              <span className="highlight">The Old Way</span>
             </h2>
           </div>
 
-          <div className="glass-card overflow-hidden">
+          <div className="sketch-card bg-white overflow-hidden p-0">
             <div className="overflow-x-auto">
-              <table className="comparison-table w-full text-sm">
+              <table className="sketch-table">
                 <thead>
-                  <tr className="border-b border-white/10">
-                    <th className="text-left text-muted-foreground font-normal py-4 px-5">Feature</th>
-                    <th className="text-left py-4 px-5">
-                      <span className="font-display text-xs tracking-wider gradient-text-accent">Inkling</span>
-                    </th>
-                    <th className="text-left text-muted-foreground font-normal py-4 px-5">Others</th>
+                  <tr className="bg-card-yellow">
+                    <th className="text-left font-comic text-lg text-ink py-4 px-5">Feature</th>
+                    <th className="text-left font-comic text-lg text-marker-orange py-4 px-5">Inkling ✦</th>
+                    <th className="text-left font-comic text-lg text-pencil py-4 px-5">Others</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {comparisons.map((row) => (
-                    <tr key={row.feature} className="border-b border-white/5 last:border-0">
-                      <td className="py-3.5 px-5 text-muted">{row.feature}</td>
-                      <td className="py-3.5 px-5 text-foreground font-medium">
+                  {comparisons.map((row, i) => (
+                    <tr key={row.feature} className={i % 2 === 0 ? "bg-white" : "bg-paper"}>
+                      <td className="py-3.5 px-5 font-body text-sm text-pencil">{row.feature}</td>
+                      <td className="py-3.5 px-5 font-body text-sm text-ink font-medium">
                         <span className="inline-flex items-center gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-success shrink-0" />
+                          <CheckCircle2 className="w-4 h-4 text-marker-green shrink-0" />
                           {row.inkling}
                         </span>
                       </td>
-                      <td className="py-3.5 px-5 text-muted-foreground">
+                      <td className="py-3.5 px-5 font-body text-sm text-pencil">
                         <span className="inline-flex items-center gap-2">
-                          <XCircle className="w-3.5 h-3.5 text-danger/50 shrink-0" />
+                          <XCircle className="w-4 h-4 text-marker-pink/60 shrink-0" />
                           {row.others}
                         </span>
                       </td>
@@ -293,38 +279,42 @@ export default function HomePage() {
         </section>
 
         {/* ===== CTA ===== */}
-        <section className="max-w-3xl mx-auto px-6 py-24 text-center">
-          <div className="glow-card p-12 sm:p-16 text-center">
-            <p className="section-label mb-4">Ready?</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-              <span className="gradient-text-hero">Forge Your Narrative</span>
+        <section className="max-w-3xl mx-auto px-6 py-20 text-center">
+          <div className="sketch-card bg-card-yellow p-10 sm:p-14 relative tape">
+            {/* Doodles inside CTA */}
+            <span className="doodle absolute top-4 right-6 text-3xl">⭐</span>
+            <span className="doodle absolute bottom-4 left-6 text-2xl">✦</span>
+
+            <p className="section-label mb-3">~ ready to be heard? ~</p>
+            <h2 className="font-comic text-4xl sm:text-5xl md:text-6xl text-ink mb-4">
+              Forge Your{" "}
+              <span className="squiggle squiggle-yellow">Narrative</span>
             </h2>
-            <p className="text-muted max-w-lg mx-auto mb-8">
+            <p className="font-body text-base text-pencil max-w-lg mx-auto mb-8">
               3 minutes of input. A complete strategy war room. Every post, reply,
-              and DM ready to copy-paste.
+              and DM ready to copy-paste. Start now.
             </p>
 
-            <Link href="/forge" className="btn-primary inline-flex items-center gap-2 text-lg px-10 py-4">
+            <Link href="/forge" className="btn-sketch btn-primary-sketch text-xl py-3.5 px-10">
               <Pen className="w-5 h-5" />
               Start Inkling — Free
             </Link>
 
-            <div className="flex items-center justify-center gap-6 mt-8 text-xs text-muted-foreground flex-wrap">
-              <span className="flex items-center gap-1.5">
-                <Target className="w-3 h-3 text-accent-light" />
-                No signup required
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Clock className="w-3 h-3 text-accent-cyan" />
-                60-second generation
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Sparkles className="w-3 h-3 text-accent-pink" />
-                Powered by Gemini AI
-              </span>
+            <div className="flex items-center justify-center gap-6 mt-8 flex-wrap">
+              {[
+                { icon: Target, text: "No signup required" },
+                { icon: Clock, text: "60-second generation" },
+                { icon: Sparkles, text: "Powered by Gemini AI" },
+              ].map((item) => (
+                <span key={item.text} className="inline-flex items-center gap-1.5 font-body text-xs text-pencil">
+                  <item.icon className="w-3.5 h-3.5 text-marker-orange" />
+                  {item.text}
+                </span>
+              ))}
             </div>
           </div>
         </section>
+
       </main>
       <Footer />
     </>

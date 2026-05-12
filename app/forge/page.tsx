@@ -5,12 +5,11 @@ export default function ForgePage() {
   return (
     <>
       <Header />
-      <main className="flex-1 flex items-center justify-center pt-16 p-8">
-        <div className="text-center">
-          <p className="text-4xl font-bold gradient-text mb-3">
-            Form Coming in Phase 4
-          </p>
-          <p className="text-muted">7-step input form will be built here.</p>
+      <main className="flex-1 flex items-center justify-center p-8">
+        <div className="sketch-card bg-card-yellow p-10 text-center max-w-md">
+          <p className="text-4xl mb-3">✏️</p>
+          <h1 className="font-comic text-4xl text-ink mb-2">Form Coming Soon</h1>
+          <p className="font-body text-pencil">7-step input form will be built in Phase 4.</p>
         </div>
       </main>
       <Footer />
