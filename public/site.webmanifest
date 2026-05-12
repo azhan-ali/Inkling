@@ -1,0 +1,17 @@
+{
+  "name": "Inkling — AI Narrative Engine for Solana Builders",
+  "short_name": "Inkling",
+  "description": "You built it. We'll ink the story.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fdf8f0",
+  "theme_color": "#ff6b35",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
