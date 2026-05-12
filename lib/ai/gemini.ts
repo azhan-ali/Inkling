@@ -47,7 +47,9 @@ export async function generateWithGemini(
   const fullPrompt = buildPrompt(inputs);
 
   const result = await model.generateContent(fullPrompt);
-  const text = result.response.text();
+  const rawText = result.response.text();
+  // Strip any leading/trailing whitespace or BOM that can break JSON.parse
+  const text = rawText.trim().replace(/^\uFEFF/, "");
 
   // Parse and validate against our Zod schema.
   let parsed: unknown;

@@ -94,6 +94,23 @@ export function repairAIOutput(raw: unknown): unknown {
     obj.ecosystemAllyFinder = obj.ecosystemAllyFinder.slice(0, 5);
   }
 
+  // --- rivalryRadar: ensure all required fields exist ---
+  if (obj.rivalryRadar && typeof obj.rivalryRadar === "object") {
+    const rr = obj.rivalryRadar as Record<string, unknown>;
+    const fallbackRR = {
+      competingCategory: "Generic Solana tooling",
+      howTheyWillPosition: "Fast, cheap, decentralized — the generic Solana pitch",
+      yourCounterPosition: "We solve a specific problem for a specific user",
+      theOneThingTheyCannotSay: "Our lived experience with this problem",
+      yourNarrativeMoat: "Specificity and authenticity cannot be copied",
+    };
+    for (const [key, val] of Object.entries(fallbackRR)) {
+      if (!rr[key] || typeof rr[key] !== "string") {
+        rr[key] = val;
+      }
+    }
+  }
+
   // --- viralThreadPack.threads: ensure exactly 2 × 7 tweets + labels ---
   if (obj.viralThreadPack && typeof obj.viralThreadPack === "object") {
     const vtp = obj.viralThreadPack as Record<string, unknown>;
