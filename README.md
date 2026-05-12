@@ -191,6 +191,6 @@ inkling/
 
 **MIT License**
 
-*Made with ✦ for Solana builders who ship great products and deserve to be heard.*
-
+*Made with ✦ for Solana builders who ship great products and deserve to be heard.* <br>
+made by Azhan Ali
 </div>
