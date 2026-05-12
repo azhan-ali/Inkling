@@ -10,6 +10,7 @@ import type { InklingInputs } from "@/types/inkling";
 import type { OutputSchema } from "@/lib/schema";
 import { outputSchema } from "@/lib/schema";
 import { buildPrompt } from "./prompt";
+import { repairAIOutput } from "./repair";
 
 let _client: GoogleGenerativeAI | null = null;
 
@@ -32,7 +33,9 @@ export async function generateWithGemini(
   const client = getClient();
 
   const model = client.getGenerativeModel({
-    model: "gemini-2.5-pro",
+    // gemini-2.5-flash has a generous free tier (500 RPD).
+    // gemini-2.5-pro has 0 free-tier quota — use flash for free accounts.
+    model: "gemini-2.5-flash",
     generationConfig: {
       // Force JSON output — prevents markdown fences and prose wrapping.
       responseMimeType: "application/json",
@@ -55,6 +58,9 @@ export async function generateWithGemini(
       `Gemini returned non-JSON output. Raw response (first 500 chars): ${text.slice(0, 500)}`
     );
   }
+
+  // Repair common deviations before strict validation.
+  parsed = repairAIOutput(parsed);
 
   const validated = outputSchema.safeParse(parsed);
   if (!validated.success) {
