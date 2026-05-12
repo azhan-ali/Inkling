@@ -98,127 +98,132 @@ export default function HomePage() {
       <main className="flex-1 relative z-10">
 
         {/* ===== HERO ===== */}
-        <section className="relative max-w-5xl mx-auto px-5 pt-14 pb-20 text-center overflow-hidden">
+        <section className="relative max-w-5xl mx-auto px-4 sm:px-6 pt-10 pb-20 text-center">
 
-          {/* ── Floating doodles (contained, won't overflow) ── */}
-          <span className="float-a absolute top-6 left-6 text-4xl select-none pointer-events-none opacity-60 hidden sm:block">⭐</span>
-          <span className="float-b absolute top-10 right-8 text-3xl select-none pointer-events-none opacity-50 hidden sm:block">⚡</span>
-          <span className="float-c absolute bottom-16 left-10 text-2xl select-none pointer-events-none opacity-40 hidden sm:block">♥</span>
-          <span className="float-a absolute bottom-10 right-6 text-3xl select-none pointer-events-none opacity-50 hidden sm:block" style={{ animationDelay: "1s" }}>✦</span>
-          <div className="absolute top-8 right-32 w-10 h-10 rounded-full border-[3px] border-dashed border-marker-pink opacity-25 doodle-spin hidden sm:block" />
-          <div className="absolute bottom-20 left-32 w-8 h-8 rounded-full border-2 border-dashed border-marker-blue opacity-20 doodle-spin hidden sm:block" style={{ animationDuration: "20s" }} />
+          {/* ── The Frame ── */}
+          <div className="hero-frame relative">
 
-          {/* ── Badge ── */}
-          <div className="inline-flex items-center gap-2 sketch-badge bg-card-yellow badge-pulse mb-7 fade-up">
-            <Sparkles className="w-4 h-4 text-marker-orange" />
-            <span className="font-hand text-sm">Colosseum × SagaPad Hackathon</span>
-            <span className="w-2 h-2 rounded-full bg-marker-green animate-pulse" />
-          </div>
+            {/* ── Floating doodles (inside frame) ── */}
+            <span className="float-a absolute top-6 left-6 text-4xl select-none pointer-events-none opacity-60 hidden sm:block">⭐</span>
+            <span className="float-b absolute top-10 right-8 text-3xl select-none pointer-events-none opacity-50 hidden sm:block">⚡</span>
+            <span className="float-c absolute bottom-16 left-10 text-2xl select-none pointer-events-none opacity-40 hidden sm:block">♥</span>
+            <span className="float-a absolute bottom-10 right-6 text-3xl select-none pointer-events-none opacity-50 hidden sm:block" style={{ animationDelay: "1s" }}>✦</span>
+            <div className="absolute top-8 right-32 w-10 h-10 rounded-full border-[3px] border-dashed border-marker-pink opacity-25 doodle-spin hidden sm:block" />
+            <div className="absolute bottom-20 left-32 w-8 h-8 rounded-full border-2 border-dashed border-marker-blue opacity-20 doodle-spin hidden sm:block" style={{ animationDuration: "20s" }} />
 
-          {/* ── Main headline ── */}
-          <h1 className="hero-title text-ink mb-5 fade-up delay-1 px-2">
-            <span className="block text-[2.6rem] sm:text-[3.8rem] md:text-[5rem] leading-[1.08]">
-              You Built It.
-            </span>
-            <span className="block text-[2.6rem] sm:text-[3.8rem] md:text-[5rem] leading-[1.08] mt-1">
-              Now{" "}
-              <span className="marker-underline marker-underline-blue relative inline-block">
-                Make Noise.
+            {/* ── Badge ── */}
+            <div className="inline-flex items-center gap-2 sketch-badge bg-card-yellow badge-pulse mb-7 fade-up">
+              <Sparkles className="w-4 h-4 text-marker-orange" />
+              <span className="font-hand text-sm">Colosseum × SagaPad Hackathon</span>
+              <span className="w-2 h-2 rounded-full bg-marker-green animate-pulse" />
+            </div>
+
+            {/* ── Main headline ── */}
+            <h1 className="hero-title text-ink mb-5 fade-up delay-1 px-2">
+              <span className="block text-[2.6rem] sm:text-[3.8rem] md:text-[5rem] leading-[1.08]">
+                You Built It.
               </span>
-            </span>
-          </h1>
+              <span className="block text-[2.6rem] sm:text-[3.8rem] md:text-[5rem] leading-[1.08] mt-1">
+                Now{" "}
+                <span className="marker-underline marker-underline-blue relative inline-block">
+                  Make Noise.
+                </span>
+              </span>
+            </h1>
 
-          {/* ── Sub-headline ── */}
-          <p
-            className="text-[1.3rem] sm:text-[1.7rem] text-marker-orange mb-4 fade-up delay-2"
-            style={{ fontFamily: "'Caveat', cursive", fontWeight: 600 }}
-          >
-            Narrative Strategy. Not Just Content.
-          </p>
-
-          {/* ── Body copy ── */}
-          <p className="font-body text-base sm:text-lg text-pencil max-w-2xl mx-auto mb-9 leading-relaxed fade-up delay-3">
-            AI-powered narrative engine for Solana hackathon builders.{" "}
-            <span className="highlight font-bold text-ink">7 inputs</span> →{" "}
-            complete war room in{" "}
-            <span className="highlight-green font-bold text-ink">60 seconds</span>.
-            Built on Solana. Powered by Gemini AI.
-          </p>
-
-          {/* ── CTAs ── */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10 fade-up delay-4">
-            <Link
-              href="/forge"
-              className="btn-sketch btn-primary-sketch text-xl py-3 px-9 group"
+            {/* ── Sub-headline ── */}
+            <p
+              className="text-[1.3rem] sm:text-[1.7rem] text-marker-orange mb-4 fade-up delay-2"
+              style={{ fontFamily: "'Caveat', cursive", fontWeight: 600 }}
             >
-              <Rocket className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-              Start Forging
-              <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
-            </Link>
-            <Link href="/#how" className="btn-sketch btn-ghost-sketch text-xl py-3 px-8">
-              See How It Works
-            </Link>
-          </div>
+              Narrative Strategy. Not Just Content.
+            </p>
 
-          {/* ── Trust signals ── */}
-          <div className="flex flex-wrap items-center justify-center gap-5 mb-12 fade-up delay-5">
-            {[
-              { icon: "✓", text: "No signup required" },
-              { icon: "✓", text: "Free to use" },
-              { icon: "✓", text: "60-second generation" },
-            ].map((t) => (
-              <span key={t.text} className="inline-flex items-center gap-1.5 font-body text-sm text-pencil">
-                <span className="text-marker-green font-bold text-base">{t.icon}</span>
-                {t.text}
-              </span>
-            ))}
-          </div>
+            {/* ── Body copy ── */}
+            <p className="font-body text-base sm:text-lg text-pencil max-w-2xl mx-auto mb-9 leading-relaxed fade-up delay-3">
+              AI-powered narrative engine for Solana hackathon builders.{" "}
+              <span className="highlight font-bold text-ink">7 inputs</span> →{" "}
+              complete war room in{" "}
+              <span className="highlight-green font-bold text-ink">60 seconds</span>.
+              Built on Solana. Powered by Gemini AI.
+            </p>
 
-          {/* ── Stats row ── */}
-          <div className="flex flex-wrap items-center justify-center gap-4 fade-up delay-5">
-            {[
-              { val: "7", label: "inputs", bg: "bg-card-yellow" },
-              { val: "7", label: "strategy sections", bg: "bg-card-pink" },
-              { val: "<60s", label: "generation time", bg: "bg-card-blue" },
-              { val: "100%", label: "copy-paste ready", bg: "bg-card-green" },
-            ].map((s) => (
-              <div key={s.label} className={`stat-card ${s.bg} min-w-[110px]`}>
-                <p
-                  className="text-3xl text-ink"
-                  style={{ fontFamily: "'Permanent Marker', cursive" }}
-                >
-                  {s.val}
-                </p>
-                <p className="font-body text-xs text-pencil mt-0.5">{s.label}</p>
+            {/* ── CTAs ── */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10 fade-up delay-4">
+              <Link
+                href="/forge"
+                className="btn-sketch btn-primary-sketch text-xl py-3 px-9 group"
+              >
+                <Rocket className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+                Start Forging
+                <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
+              </Link>
+              <Link href="/#how" className="btn-sketch btn-ghost-sketch text-xl py-3 px-8">
+                See How It Works
+              </Link>
+            </div>
+
+            {/* ── Trust signals ── */}
+            <div className="flex flex-wrap items-center justify-center gap-5 mb-10 fade-up delay-5">
+              {[
+                { icon: "✓", text: "No signup required" },
+                { icon: "✓", text: "Free to use" },
+                { icon: "✓", text: "60-second generation" },
+              ].map((t) => (
+                <span key={t.text} className="inline-flex items-center gap-1.5 font-body text-sm text-pencil">
+                  <span className="text-marker-green font-bold text-base">{t.icon}</span>
+                  {t.text}
+                </span>
+              ))}
+            </div>
+
+            {/* ── Stats row ── */}
+            <div className="flex flex-wrap items-center justify-center gap-4 mb-10 fade-up delay-5">
+              {[
+                { val: "7", label: "inputs", bg: "bg-card-yellow" },
+                { val: "7", label: "strategy sections", bg: "bg-card-pink" },
+                { val: "<60s", label: "generation time", bg: "bg-card-blue" },
+                { val: "100%", label: "copy-paste ready", bg: "bg-card-green" },
+              ].map((s) => (
+                <div key={s.label} className={`stat-card ${s.bg} min-w-[110px]`}>
+                  <p
+                    className="text-3xl text-ink"
+                    style={{ fontFamily: "'Permanent Marker', cursive" }}
+                  >
+                    {s.val}
+                  </p>
+                  <p className="font-body text-xs text-pencil mt-0.5">{s.label}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* ── Preview cards row ── */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 fade-up delay-5">
+              <div className="sketch-card bg-card-purple p-3 sm:p-4 text-left" style={{ transform: "rotate(-1deg)" }}>
+                <p className="font-hand text-xs text-pencil mb-1">Your Archetype</p>
+                <p className="hero-title text-base text-ink leading-tight">The Use-Case Pioneer 🧭</p>
+                <p className="font-body text-xs text-pencil mt-1 opacity-70">&ldquo;Why has nobody done this?&rdquo;</p>
               </div>
-            ))}
-          </div>
+              <div className="sketch-card bg-card-yellow p-3 sm:p-4 text-left" style={{ transform: "rotate(1deg)" }}>
+                <p className="font-hand text-xs text-pencil mb-1">✦ Your One Truth</p>
+                <p className="font-hand text-sm text-ink italic leading-snug">&ldquo;We are building what SWIFT forgot.&rdquo;</p>
+              </div>
+              <div className="sketch-card bg-card-green p-3 sm:p-4 text-left" style={{ transform: "rotate(-0.5deg)" }}>
+                <p className="font-hand text-xs text-pencil mb-1">⏰ Hour 0–6</p>
+                <p className="font-body text-xs text-ink">Post your origin story before momentum window closes.</p>
+                <span className="sketch-badge bg-white text-xs mt-2 inline-block">Copy-paste ready</span>
+              </div>
+              <div className="sketch-card bg-card-pink p-3 sm:p-4 text-left" style={{ transform: "rotate(1.5deg)" }}>
+                <p className="font-hand text-xs text-pencil mb-1">⚔️ Rivalry Radar</p>
+                <p className="font-body text-xs text-ink">
+                  <span className="line-through opacity-50">Generic DeFi pitch</span>
+                  <br />
+                  <span className="text-marker-green font-bold">→ Freelance Infrastructure</span>
+                </p>
+              </div>
+            </div>
 
-          {/* ── Preview cards row (horizontal, below stats) ── */}
-          <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-4 fade-up delay-5">
-            <div className="sketch-card bg-card-purple p-4 text-left" style={{ transform: "rotate(-1deg)" }}>
-              <p className="font-hand text-xs text-pencil mb-1">Your Archetype</p>
-              <p className="hero-title text-base text-ink leading-tight">The Use-Case Pioneer 🧭</p>
-              <p className="font-body text-xs text-pencil mt-1 opacity-70">&ldquo;Why has nobody done this?&rdquo;</p>
-            </div>
-            <div className="sketch-card bg-card-yellow p-4 text-left" style={{ transform: "rotate(1deg)" }}>
-              <p className="font-hand text-xs text-pencil mb-1">✦ Your One Truth</p>
-              <p className="font-hand text-sm text-ink italic leading-snug">&ldquo;We are building what SWIFT forgot.&rdquo;</p>
-            </div>
-            <div className="sketch-card bg-card-green p-4 text-left" style={{ transform: "rotate(-0.5deg)" }}>
-              <p className="font-hand text-xs text-pencil mb-1">⏰ Hour 0–6</p>
-              <p className="font-body text-xs text-ink">Post your origin story before momentum window closes.</p>
-              <span className="sketch-badge bg-white text-xs mt-2 inline-block">Copy-paste ready</span>
-            </div>
-            <div className="sketch-card bg-card-pink p-4 text-left" style={{ transform: "rotate(1.5deg)" }}>
-              <p className="font-hand text-xs text-pencil mb-1">⚔️ Rivalry Radar</p>
-              <p className="font-body text-xs text-ink">
-                <span className="line-through opacity-50">Generic DeFi pitch</span>
-                <br />
-                <span className="text-marker-green font-bold">→ Freelance Infrastructure</span>
-              </p>
-            </div>
-          </div>
+          </div>{/* end hero-frame */}
 
           <p className="font-hand text-pencil text-sm mt-10 bounce-slow inline-block">
             scroll down ↓
