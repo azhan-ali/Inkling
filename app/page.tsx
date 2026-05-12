@@ -17,6 +17,8 @@ const features = [
     desc: "Assigns your identity — Underdog, Infrastructure, Culture Shift, or Pioneer. Includes threat assessment and your One Truth.",
     bg: "bg-card-yellow",
     iconBg: "bg-marker-yellow",
+    tag: "Identity",
+    output: "Archetype + One Truth + Hashtag",
   },
   {
     icon: Clock,
@@ -24,6 +26,8 @@ const features = [
     desc: "Hour-by-hour 48hr action plan with copy-paste posts. Execute before momentum dies.",
     bg: "bg-card-pink",
     iconBg: "bg-marker-pink",
+    tag: "Urgency",
+    output: "5 time-slot posts ready",
   },
   {
     icon: Map,
@@ -31,6 +35,8 @@ const features = [
     desc: "3 live Solana debates + pre-written replies + risk levels + optimal timing windows.",
     bg: "bg-card-blue",
     iconBg: "bg-marker-blue",
+    tag: "Visibility",
+    output: "3 replies + risk ratings",
   },
   {
     icon: Swords,
@@ -38,6 +44,8 @@ const features = [
     desc: "How competitors will position. Your counter-strategy. Your unfair narrative advantage.",
     bg: "bg-card-orange",
     iconBg: "bg-marker-orange",
+    tag: "Strategy",
+    output: "Counter-position + moat",
   },
   {
     icon: BookOpen,
@@ -45,6 +53,8 @@ const features = [
     desc: "Same story in Degen, Builder, and Founder voice. Pick what fits. Ready to post.",
     bg: "bg-card-purple",
     iconBg: "bg-marker-purple",
+    tag: "Voice",
+    output: "3 versions, post-ready",
   },
   {
     icon: Zap,
@@ -52,6 +62,8 @@ const features = [
     desc: "2 complete 7-tweet threads (Hook-Proof-Pull) + 5 standalone posts + your hashtag.",
     bg: "bg-card-green",
     iconBg: "bg-marker-green",
+    tag: "Content",
+    output: "14 tweets + 5 posts",
   },
   {
     icon: Users,
@@ -59,6 +71,8 @@ const features = [
     desc: "5 builders to collaborate with, cross-promo angles, and non-pitchy approach scripts.",
     bg: "bg-card-mint",
     iconBg: "bg-marker-teal",
+    tag: "Network",
+    output: "5 allies + DM scripts",
   },
 ];
 
@@ -226,32 +240,90 @@ export default function HomePage() {
         </section>
 
         {/* ===== FEATURES ===== */}
-        <section id="features" className="max-w-6xl mx-auto px-6 py-20">
-          <div className="text-center mb-14">
-            <p className="section-label mb-2">~ what makes us different ~</p>
-            <h2 className="font-comic text-4xl sm:text-5xl md:text-6xl text-ink mb-3">
-              Everything You Need.{" "}
-              <span className="highlight-pink">Nothing You Don&apos;t.</span>
+        <section id="features" className="max-w-6xl mx-auto px-6 py-24">
+
+          {/* ── Section header ── */}
+          <div className="text-center mb-16">
+            <p className="section-label mb-3">~ what you get ~</p>
+            <h2 className="font-comic text-4xl sm:text-5xl md:text-6xl text-ink mb-4 leading-tight">
+              Everything You Need.
+              <br />
+              <span className="relative inline-block">
+                <span className="highlight-pink">Nothing You Don&apos;t.</span>
+              </span>
             </h2>
-            <p className="font-body text-base text-pencil max-w-xl mx-auto">
-              7 sections designed to take you from invisible to unmissable in the Solana ecosystem.
+            <p className="font-body text-lg text-pencil max-w-xl mx-auto">
+              7 battle-tested sections. Every word copy-paste ready.
+              <br />
+              <span className="font-hand text-marker-orange text-xl">From invisible → unmissable in 60 seconds.</span>
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* ── Feature grid ── */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {features.map((f, i) => (
               <div
                 key={f.title}
-                className={`sketch-card ${f.bg} p-6 fade-up`}
-                style={{ animationDelay: `${0.05 * i}s`, transform: `rotate(${i % 2 === 0 ? -0.5 : 0.5}deg)` }}
+                className={`feature-card-wrap group relative sketch-card ${f.bg} p-6 overflow-hidden cursor-default`}
+                style={{
+                  transform: `rotate(${[-0.8, 0.6, -0.4, 0.7, -0.5, 0.4, -0.6][i] ?? 0}deg)`,
+                  animationDelay: `${0.07 * i}s`,
+                }}
               >
-                <div className={`w-11 h-11 rounded-full ${f.iconBg} border-2 border-ink flex items-center justify-center mb-4 sketch-shadow-sm`}>
-                  <f.icon className="w-5 h-5 text-white" />
+                {/* Big ghost number */}
+                <span className="feature-num">{String(i + 1).padStart(2, "0")}</span>
+
+                {/* Top row: icon + tag */}
+                <div className="flex items-start justify-between mb-4">
+                  <div className={`w-12 h-12 rounded-2xl ${f.iconBg} border-[3px] border-ink flex items-center justify-center sketch-shadow-sm group-hover:-rotate-6 group-hover:scale-110 transition-all duration-200`}>
+                    <f.icon className="w-5 h-5 text-white" />
+                  </div>
+                  <span className={`feature-tag ${f.bg} border-ink text-ink text-[0.7rem]`}>
+                    {f.tag}
+                  </span>
                 </div>
-                <h3 className="font-comic text-xl text-ink mb-2">{f.title}</h3>
-                <p className="font-body text-sm text-ink-soft leading-relaxed">{f.desc}</p>
+
+                {/* Title */}
+                <h3
+                  className="text-[1.25rem] text-ink mb-2 leading-tight"
+                  style={{ fontFamily: "'Permanent Marker', cursive" }}
+                >
+                  {f.title}
+                </h3>
+
+                {/* Description */}
+                <p className="font-body text-sm text-ink-soft leading-relaxed mb-4">{f.desc}</p>
+
+                {/* Bottom: what you get pill */}
+                <div className="flex items-center gap-2 mt-auto">
+                  <span className="inline-flex items-center gap-1 font-hand text-xs text-ink bg-white/70 border border-ink/20 rounded-full px-3 py-1">
+                    <span className="text-marker-green">✓</span> {f.output}
+                  </span>
+                </div>
+
+                {/* Hover shine sweep */}
+                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-300 rounded-[inherit] pointer-events-none" />
               </div>
             ))}
+          </div>
+
+          {/* ── Bottom CTA strip ── */}
+          <div className="mt-14 sketch-card bg-card-yellow p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-5">
+            <div>
+              <p className="font-comic text-2xl sm:text-3xl text-ink mb-1">
+                All 7 sections. One generation. 60 seconds.
+              </p>
+              <p className="font-body text-sm text-pencil">
+                No templates. No generic advice. Your project, your archetype, your war room.
+              </p>
+            </div>
+            <Link
+              href="/forge"
+              className="btn-sketch btn-primary-sketch text-xl py-3 px-8 shrink-0 group"
+            >
+              <Sparkles className="w-5 h-5 group-hover:rotate-180 transition-transform duration-300" />
+              Get All 7 →
+            </Link>
           </div>
         </section>
 
