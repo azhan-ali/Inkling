@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { SketchCard, SketchBadge } from "@/components/sketch";
+import { Header } from "@/components/shared/Header";
+import { Footer } from "@/components/shared/Footer";
 import {
   Compass,
   Clock,
@@ -9,9 +10,11 @@ import {
   Zap,
   Users,
   ArrowRight,
-  Pen,
   Sparkles,
   Target,
+  Pen,
+  CheckCircle2,
+  XCircle,
 } from "lucide-react";
 
 // ---------------------------------------------------------------------------
@@ -21,59 +24,45 @@ import {
 const features = [
   {
     icon: Compass,
-    title: "Narrative Archetype",
-    description: "Discover your identity in the Solana ecosystem — Underdog, Infrastructure, Culture Shift, or Pioneer.",
-    rotate: -0.8,
-    badge: "Identity",
-    badgeVariant: "purple" as const,
+    title: "Narrative Archetype Engine",
+    description:
+      "Assigns your identity in the ecosystem — Underdog, Infrastructure, Culture Shift, or Use-Case Pioneer. Includes threat assessment.",
   },
   {
     icon: Clock,
     title: "Week Zero Kit",
-    description: "Hour-by-hour 48hr action plan with copy-paste posts. No more 'what do I post first?'",
-    rotate: 0.5,
-    badge: "Urgency",
-    badgeVariant: "red" as const,
+    description:
+      "Hour-by-hour 48hr action plan with copy-paste posts. No more 'what do I post first?' anxiety.",
   },
   {
     icon: Map,
     title: "Insertion Points Map",
-    description: "3 live Solana debates to join, with pre-written replies, risk levels, and optimal timing.",
-    rotate: -0.3,
-    badge: "Visibility",
-    badgeVariant: "blue" as const,
+    description:
+      "3 live Solana debates to join, with pre-written replies, risk levels, and optimal posting times.",
   },
   {
     icon: Swords,
     title: "Rivalry Radar",
-    description: "Know how competitors will position. Get your counter-strategy and unfair narrative advantage.",
-    rotate: 0.7,
-    badge: "Strategy",
-    badgeVariant: "red" as const,
+    description:
+      "Know how competitors will position. Get your counter-strategy and unfair narrative advantage.",
   },
   {
     icon: BookOpen,
-    title: "3 Origin Stories",
-    description: "Same story in Degen, Builder, and Founder voice. Pick what fits. Copy-paste ready.",
-    rotate: -0.5,
-    badge: "Voice",
-    badgeVariant: "green" as const,
+    title: "3 Origin Story Versions",
+    description:
+      "Same story in Degen, Builder, and Founder voice. Pick what fits your natural style. Copy-paste ready.",
   },
   {
     icon: Zap,
     title: "Viral Thread Pack",
-    description: "2 complete 7-tweet threads + 5 standalone posts. Hook-Proof-Pull formula built in.",
-    rotate: 0.4,
-    badge: "Content",
-    badgeVariant: "yellow" as const,
+    description:
+      "2 complete 7-tweet threads using Hook-Proof-Pull formula + 5 standalone posts + your personal hashtag.",
   },
   {
     icon: Users,
     title: "Ecosystem Ally Finder",
-    description: "5 builders to collaborate with, cross-promo angles, and non-pitchy approach scripts.",
-    rotate: -0.6,
-    badge: "Network",
-    badgeVariant: "blue" as const,
+    description:
+      "5 builders to collaborate with, cross-promo angles, and non-pitchy approach scripts. Updated weekly.",
   },
 ];
 
@@ -83,23 +72,62 @@ const features = [
 
 const steps = [
   {
-    num: "01",
-    title: "Fill 7 fields",
-    description: "Project name, one-liner, tech stack, target user, team, biggest fear, and your vibe.",
-    icon: Pen,
+    num: 1,
+    emoji: "📝",
+    title: "Fill 7 Fields",
+    description:
+      "Project name, one-liner, tech stack, target user, team, biggest fear, and communication style.",
   },
   {
-    num: "02",
-    title: "AI forges your strategy",
-    description: "Inkling analyzes your inputs against live Solana ecosystem intelligence.",
-    icon: Sparkles,
+    num: 2,
+    emoji: "🧠",
+    title: "AI Analyzes Your Project",
+    description:
+      "Inkling scores your archetype, maps the ecosystem, and identifies your narrative position.",
   },
   {
-    num: "03",
-    title: "Execute in 48 hours",
-    description: "Copy-paste your way to ecosystem visibility. Every post, reply, and DM is ready.",
-    icon: Target,
+    num: 3,
+    emoji: "⚡",
+    title: "Strategy Generated",
+    description:
+      "Complete 7-section war room generated in under 60 seconds. All content copy-paste ready.",
   },
+  {
+    num: 4,
+    emoji: "🎯",
+    title: "Post Origin Story",
+    description:
+      "Hour 0–6: Your origin story goes live. First post before the momentum window closes.",
+  },
+  {
+    num: 5,
+    emoji: "💬",
+    title: "Insert Into Debates",
+    description:
+      "Pre-written replies go out to targeted accounts at optimal times. Visibility begins.",
+  },
+  {
+    num: 6,
+    emoji: "🚀",
+    title: "Compound Your Signal",
+    description:
+      "Follow the 4-week battle plan. Every post builds on the last. Audience compounds.",
+  },
+];
+
+// ---------------------------------------------------------------------------
+// Comparison data
+// ---------------------------------------------------------------------------
+
+const comparisons = [
+  { feature: "Strategy type", inkling: "Personalized war room", others: "Generic content calendar" },
+  { feature: "Time to first post", inkling: "< 6 hours", others: "Days of planning" },
+  { feature: "Competitor awareness", inkling: "Rivalry Radar built-in", others: "None" },
+  { feature: "Ecosystem intelligence", inkling: "Live Solana data", others: "Generic advice" },
+  { feature: "Content ready to post", inkling: "Copy-paste ready", others: "Templates only" },
+  { feature: "Insertion points", inkling: "3 debates + replies", others: "Post 3x a week" },
+  { feature: "Retention hook", inkling: "Weekly Ally Refresh", others: "One-time use" },
+  { feature: "Built for Solana", inkling: "✓ Native", others: "Generic" },
 ];
 
 // ---------------------------------------------------------------------------
@@ -108,156 +136,235 @@ const steps = [
 
 export default function HomePage() {
   return (
-    <main className="flex-1">
-      {/* ===== HERO ===== */}
-      <section className="max-w-5xl mx-auto px-6 pt-16 pb-20 text-center">
-        <SketchBadge variant="yellow" className="mb-6">
-          For Solana Hackathon Builders
-        </SketchBadge>
+    <>
+      <Header />
+      <main className="flex-1 pt-16">
+        {/* ===== HERO ===== */}
+        <section className="max-w-5xl mx-auto px-6 pt-20 pb-16 text-center">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-card-border bg-card text-sm text-muted mb-8">
+            <Sparkles className="w-3.5 h-3.5 text-accent-light" />
+            Built for Colosseum × SagaPad Hackathon
+          </div>
 
-        <h1 className="font-handwritten text-6xl sm:text-7xl md:text-8xl text-ink leading-tight mb-6">
-          You built it.
-          <br />
-          <span className="text-marker-blue">We&apos;ll ink the story.</span>
-        </h1>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
+            <span className="gradient-text">
+              Stop Building in Silence.
+            </span>
+            <br />
+            <span className="gradient-text">
+              Start Building a{" "}
+            </span>
+            <span className="gradient-text-accent">Narrative.</span>
+          </h1>
 
-        <p className="font-body-hand text-xl sm:text-2xl text-pencil max-w-2xl mx-auto mb-10 leading-relaxed">
-          Inkling turns 7 project inputs into a complete narrative war room —
-          archetype identity, 48-hour action plan, rivalry radar, viral threads,
-          and more. In 3 minutes.
-        </p>
+          <p className="text-lg sm:text-xl text-muted max-w-2xl mx-auto mb-8 leading-relaxed">
+            AI-powered narrative strategy engine for Solana hackathon builders.
+            7 inputs → complete war room in 60 seconds.
+          </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
-            href="/forge"
-            className="font-handwritten text-2xl px-8 py-3.5 bg-marker-yellow text-ink border-2 border-ink rounded-sm sketch-shadow hover:-translate-y-0.5 transition wobble inline-flex items-center gap-2"
-          >
-            Forge Your Signal
-            <ArrowRight className="w-5 h-5" />
-          </Link>
-          <Link
-            href="/#features"
-            className="font-handwritten text-xl px-6 py-2.5 text-pencil border-2 border-pencil/40 rounded-sm hover:border-ink hover:text-ink transition wobble"
-          >
-            See all 7 features
-          </Link>
-        </div>
-
-        {/* Decorative scribble */}
-        <div className="mt-12 flex justify-center">
-          <svg width="200" height="20" viewBox="0 0 200 20" className="text-pencil/30">
-            <path
-              d="M0 10 Q25 2, 50 10 T100 10 T150 10 T200 10"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-          </svg>
-        </div>
-      </section>
-
-      {/* ===== FEATURES ===== */}
-      <section id="features" className="max-w-6xl mx-auto px-6 pb-20">
-        <h2 className="font-handwritten text-4xl sm:text-5xl text-center text-ink mb-4">
-          7 Sections. One War Room.
-        </h2>
-        <p className="font-body-hand text-lg text-pencil text-center max-w-xl mx-auto mb-12">
-          Every section is copy-paste ready. No editing required. Just execute.
-        </p>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {features.map((f) => (
-            <SketchCard
-              key={f.title}
-              rotate={f.rotate}
-              tape
-              className="hover:-translate-y-1 transition-transform duration-200"
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+            <Link
+              href="/forge"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-accent hover:bg-accent-light text-white font-medium rounded-lg transition glow-accent-sm"
             >
-              <div className="flex items-start gap-3 mb-3">
-                <div className="w-10 h-10 rounded-full border-2 border-ink flex items-center justify-center bg-paper-shade shrink-0">
-                  <f.icon className="w-5 h-5 text-ink" />
+              Start Getting Visible
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
+              href="/#how"
+              className="inline-flex items-center gap-2 px-6 py-3 border border-card-border text-muted hover:text-foreground hover:border-muted rounded-lg transition"
+            >
+              See How It Works
+            </Link>
+          </div>
+
+          {/* Stats bar */}
+          <div className="stats-bar inline-flex items-center gap-6 sm:gap-8 px-6 py-3 rounded-full text-sm">
+            <div className="flex items-center gap-2">
+              <span className="text-accent-light font-semibold">7</span>
+              <span className="text-muted">inputs</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-accent-light font-semibold">7</span>
+              <span className="text-muted">strategy sections</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-accent-light font-semibold">&lt;60s</span>
+              <span className="text-muted">generation time</span>
+            </div>
+            <div className="hidden sm:flex items-center gap-2">
+              <span className="text-accent-light font-semibold">100%</span>
+              <span className="text-muted">copy-paste ready</span>
+            </div>
+          </div>
+
+          <p className="text-muted-foreground text-sm mt-6">scroll down ↓</p>
+        </section>
+
+        {/* ===== FEATURES ===== */}
+        <section id="features" className="max-w-6xl mx-auto px-6 py-20">
+          <p className="section-label text-center mb-3">
+            ~ what you get ~
+          </p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
+            <span className="gradient-text">Everything you need.</span>
+            <br />
+            <span className="text-muted">Nothing you don&apos;t.</span>
+          </h2>
+          <p className="text-muted text-center max-w-xl mx-auto mb-12">
+            7 sections designed to take you from invisible to unmissable in the
+            Solana ecosystem.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {features.map((f) => (
+              <div key={f.title} className="feature-card p-6">
+                <div className="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center mb-4">
+                  <f.icon className="w-5 h-5 text-accent-light" />
+                </div>
+                <h3 className="text-lg font-semibold text-foreground mb-2">
+                  {f.title}
+                </h3>
+                <p className="text-sm text-muted leading-relaxed">
+                  {f.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ===== HOW IT WORKS ===== */}
+        <section id="how" className="max-w-4xl mx-auto px-6 py-20">
+          <p className="section-label text-center mb-3">
+            ~ how it works ~
+          </p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4">
+            <span className="gradient-text">Six steps.</span>
+            <br />
+            <span className="text-muted">Zero headaches.</span>
+          </h2>
+
+          <div className="mt-12 space-y-4">
+            {steps.map((step) => (
+              <div
+                key={step.num}
+                className="feature-card p-5 flex items-start gap-4"
+              >
+                <div className="flex items-center gap-3 shrink-0">
+                  <span className="text-xs font-mono text-muted-foreground w-5">
+                    {step.num}
+                  </span>
+                  <span className="text-2xl">{step.emoji}</span>
                 </div>
                 <div>
-                  <SketchBadge variant={f.badgeVariant} className="text-sm mb-1">
-                    {f.badge}
-                  </SketchBadge>
-                  <h3 className="font-handwritten text-2xl text-ink">
-                    {f.title}
+                  <h3 className="text-base font-semibold text-foreground mb-1">
+                    {step.title}
                   </h3>
+                  <p className="text-sm text-muted">{step.description}</p>
                 </div>
               </div>
-              <p className="font-body-hand text-base text-pencil leading-relaxed">
-                {f.description}
-              </p>
-            </SketchCard>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
 
-      {/* ===== HOW IT WORKS ===== */}
-      <section id="how-it-works" className="max-w-4xl mx-auto px-6 pb-20">
-        <h2 className="font-handwritten text-4xl sm:text-5xl text-center text-ink mb-12">
-          How it works
-        </h2>
+          <div className="text-center mt-8">
+            <Link
+              href="/forge"
+              className="inline-flex items-center gap-2 text-accent-light hover:text-accent font-medium transition text-sm"
+            >
+              Try it yourself →
+            </Link>
+          </div>
+        </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {steps.map((step, i) => (
-            <div key={step.num} className="text-center relative">
-              {/* Arrow between steps (desktop only) */}
-              {i < steps.length - 1 && (
-                <div className="hidden md:block absolute top-12 -right-4 w-8">
-                  <svg viewBox="0 0 32 20" className="text-pencil/40 w-full">
-                    <path
-                      d="M0 10 L24 10 M20 5 L26 10 L20 15"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-              )}
-
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-ink flex items-center justify-center bg-white wobble sketch-shadow-sm">
-                <step.icon className="w-7 h-7 text-marker-blue" />
-              </div>
-              <span className="font-handwritten text-4xl text-marker-blue/40">
-                {step.num}
-              </span>
-              <h3 className="font-handwritten text-2xl text-ink mt-1 mb-2">
-                {step.title}
-              </h3>
-              <p className="font-body-hand text-base text-pencil">
-                {step.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ===== WHO IT'S FOR ===== */}
-      <section className="max-w-3xl mx-auto px-6 pb-20 text-center">
-        <SketchCard rotate={-0.3} shadow className="py-8 px-6">
-          <h2 className="font-handwritten text-3xl sm:text-4xl text-ink mb-4">
-            Built for builders who shipped great products
-            <br />
-            <span className="text-marker-red">but nobody knows yet.</span>
-          </h2>
-          <p className="font-body-hand text-lg text-pencil max-w-lg mx-auto mb-6">
-            If you submitted to Colosseum and your next thought was &ldquo;now
-            what?&rdquo; — Inkling is your answer.
+        {/* ===== COMPARISON ===== */}
+        <section id="why" className="max-w-4xl mx-auto px-6 py-20">
+          <p className="section-label text-center mb-3">
+            ~ the honest comparison ~
           </p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12">
+            <span className="gradient-text">Inkling vs.</span>
+            <br />
+            <span className="text-muted">generic content tools</span>
+          </h2>
+
+          <div className="overflow-x-auto">
+            <table className="comparison-table w-full text-sm">
+              <thead>
+                <tr className="border-b border-card-border">
+                  <th className="text-left text-muted-foreground font-normal py-3 px-4">
+                    Feature
+                  </th>
+                  <th className="text-left font-semibold py-3 px-4">
+                    <span className="gradient-text-accent">Inkling</span>
+                  </th>
+                  <th className="text-left text-muted-foreground font-normal py-3 px-4">
+                    Others
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisons.map((row) => (
+                  <tr key={row.feature} className="border-b border-card-border/50">
+                    <td className="py-3 px-4 text-muted">{row.feature}</td>
+                    <td className="py-3 px-4 text-foreground font-medium">
+                      <span className="inline-flex items-center gap-1.5">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-success" />
+                        {row.inkling}
+                      </span>
+                    </td>
+                    <td className="py-3 px-4 text-muted-foreground">
+                      <span className="inline-flex items-center gap-1.5">
+                        <XCircle className="w-3.5 h-3.5 text-danger/60" />
+                        {row.others}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {/* ===== CTA ===== */}
+        <section className="max-w-3xl mx-auto px-6 py-20 text-center">
+          <p className="section-label mb-3">
+            ~ ready to be heard? ~
+          </p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            <span className="gradient-text">Forge your</span>{" "}
+            <span className="gradient-text-accent">narrative</span>
+          </h2>
+          <p className="text-muted max-w-lg mx-auto mb-8">
+            3 minutes of input. A complete strategy war room. Every post, reply,
+            and DM ready to copy-paste. Start now.
+          </p>
+
           <Link
             href="/forge"
-            className="font-handwritten text-2xl px-8 py-3 bg-marker-yellow text-ink border-2 border-ink rounded-sm sketch-shadow hover:-translate-y-0.5 transition wobble inline-flex items-center gap-2"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-accent hover:bg-accent-light text-white font-medium rounded-lg transition glow-accent text-lg"
           >
-            Start in 3 minutes
-            <ArrowRight className="w-5 h-5" />
+            <Pen className="w-5 h-5" />
+            Start Inkling — Free
           </Link>
-        </SketchCard>
-      </section>
-    </main>
+
+          <div className="flex items-center justify-center gap-6 mt-6 text-xs text-muted-foreground">
+            <span className="flex items-center gap-1">
+              <Target className="w-3 h-3" />
+              No signup required
+            </span>
+            <span className="flex items-center gap-1">
+              <Clock className="w-3 h-3" />
+              60-second generation
+            </span>
+            <span className="flex items-center gap-1">
+              <Sparkles className="w-3 h-3" />
+              Powered by Gemini AI
+            </span>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
   );
 }
