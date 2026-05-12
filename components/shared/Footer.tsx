@@ -3,18 +3,20 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="border-t border-card-border mt-auto">
+    <footer className="border-t border-white/5 mt-auto relative">
       <div className="max-w-6xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center">
-                <Pen className="w-4 h-4 text-accent-light" />
+            <div className="flex items-center gap-2.5 mb-4">
+              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-accent to-accent-cyan flex items-center justify-center">
+                <Pen className="w-3.5 h-3.5 text-white" />
               </div>
-              <span className="text-lg font-semibold">Inkling</span>
+              <span className="font-display text-sm tracking-wider">
+                Inkling
+              </span>
             </div>
-            <p className="text-sm text-muted max-w-sm">
+            <p className="text-sm text-muted max-w-sm leading-relaxed">
               AI-powered narrative strategy engine for Solana hackathon builders.
               You built it. We&apos;ll ink the story.
             </p>
@@ -22,10 +24,10 @@ export function Footer() {
 
           {/* Product */}
           <div>
-            <h4 className="text-sm font-semibold text-foreground mb-3">
+            <h4 className="font-display text-xs tracking-wider text-accent-light mb-4">
               Product
             </h4>
-            <ul className="space-y-2 text-sm text-muted">
+            <ul className="space-y-2.5 text-sm text-muted">
               <li>
                 <Link href="/#features" className="hover:text-foreground transition">
                   Features
@@ -46,37 +48,27 @@ export function Footer() {
 
           {/* Built On */}
           <div>
-            <h4 className="text-sm font-semibold text-foreground mb-3">
-              Built On
+            <h4 className="font-display text-xs tracking-wider text-accent-light mb-4">
+              Built With
             </h4>
-            <ul className="space-y-2 text-sm text-muted">
-              <li>Solana</li>
-              <li>Google Gemini</li>
+            <ul className="space-y-2.5 text-sm text-muted">
+              <li>Solana Ecosystem</li>
+              <li>Google Gemini AI</li>
               <li>SagaPad Marketplace</li>
               <li>Colosseum Hackathon</li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-card-border mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="border-t border-white/5 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">
-            Built for the Colosseum × SagaPad Hackathon · Topic 1 — Social Playbook
+            Built for Colosseum × SagaPad Hackathon · Topic 1 — Social Playbook
           </p>
           <div className="flex items-center gap-4 text-xs text-muted-foreground">
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-foreground transition"
-            >
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent-light transition">
               GitHub
             </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-foreground transition"
-            >
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-accent-light transition">
               Twitter
             </a>
           </div>

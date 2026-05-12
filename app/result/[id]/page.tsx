@@ -1,10 +1,6 @@
 import { Header } from "@/components/shared/Header";
 import { Footer } from "@/components/shared/Footer";
 
-/**
- * /result/[id] — Result display page.
- * Full implementation in Phase 5.
- */
 export default async function ResultPage({
   params,
 }: {
@@ -16,7 +12,7 @@ export default async function ResultPage({
       <Header />
       <main className="flex-1 flex items-center justify-center pt-16 p-8">
         <div className="text-center">
-          <p className="text-4xl font-bold gradient-text mb-2">
+          <p className="text-4xl font-bold gradient-text mb-3">
             Result: {id}
           </p>
           <p className="text-muted">
