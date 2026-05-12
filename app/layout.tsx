@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Caveat, Patrick_Hand, Kalam, Gloria_Hallelujah } from "next/font/google";
 import "./globals.css";
 import { SketchDefs } from "@/components/sketch/SketchDefs";
+import { Header } from "@/components/shared/Header";
+import { Footer } from "@/components/shared/Footer";
 
 const caveat = Caveat({
   variable: "--font-caveat",
@@ -68,7 +70,9 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col paper-bg font-body-hand text-ink">
         <SketchDefs />
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
