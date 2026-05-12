@@ -253,7 +253,7 @@ Try Inkling at: **https://inkling.vercel.app**
 
 ## GitHub
 
-Source code: **https://github.com/[your-username]/inkling**
+Source code: **https://github.com/azhan-ali/Inkling**
 
 ## Submission
 

@@ -9,6 +9,7 @@ Built for the **Colosseum Hackathon · SagaPad Skill Marketplace · Topic 1 — 
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-inkling.vercel.app-ff6b35?style=flat-square)](https://inkling.vercel.app)
 [![SagaPad](https://img.shields.io/badge/SagaPad-Colosseum%20Hackathon-ffd60a?style=flat-square)](https://sagapad.com/skills/inkling)
+[![GitHub](https://img.shields.io/badge/GitHub-azhan--ali%2FInkling-1a1a2e?style=flat-square)](https://github.com/azhan-ali/Inkling)
 
 ---
 

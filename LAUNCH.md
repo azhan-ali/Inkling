@@ -53,7 +53,7 @@ Inkling is an AI-powered narrative strategy engine for Solana hackathon builders
 
 **Links:**
 - SagaPad skill: `https://sagapad.com/skills/inkling`
-- GitHub repo: `https://github.com/[your-username]/inkling`
+- GitHub repo: `https://github.com/azhan-ali/Inkling`
 - X launch post: `[your tweet URL]`
 
 ---
