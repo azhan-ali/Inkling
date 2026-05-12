@@ -4,7 +4,7 @@
    ============================================================ */
 
 /* ---------- Google Fonts (must come before tailwindcss) ---------- */
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@400;500;600;700&family=Patrick+Hand&family=Nunito:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Caveat:wght@400;500;600;700&family=Patrick+Hand&family=Nunito:wght@400;500;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap');
 
 @import "tailwindcss";
 
@@ -56,10 +56,10 @@
   --color-marker-purple:  var(--marker-purple);
   --color-marker-teal:    var(--marker-teal);
 
-  --font-comic:    'Bangers', cursive;
+  --font-comic:    'Permanent Marker', cursive;
   --font-hand:     'Caveat', cursive;
   --font-body:     'Patrick Hand', cursive;
-  --font-ui:       'Nunito', sans-serif;
+  --font-ui:       'Fredoka', sans-serif;
 }
 
 /* ============================================================
@@ -108,10 +108,10 @@ html { scroll-behavior: smooth; }
 /* ============================================================
    Typography
    ============================================================ */
-.font-comic  { font-family: 'Bangers', cursive; letter-spacing: 0.04em; }
+.font-comic  { font-family: 'Permanent Marker', cursive; letter-spacing: -0.01em; }
 .font-hand   { font-family: 'Caveat', cursive; }
 .font-body   { font-family: 'Patrick Hand', cursive; }
-.font-ui     { font-family: 'Nunito', sans-serif; }
+.font-ui     { font-family: 'Fredoka', sans-serif; }
 
 /* Highlight underline (yellow marker) */
 .highlight {
@@ -388,3 +388,87 @@ html { scroll-behavior: smooth; }
 .delay-5 { animation-delay: 0.5s; }
 .delay-6 { animation-delay: 0.6s; }
 .delay-7 { animation-delay: 0.7s; }
+
+/* ============================================================
+   Hero headline — marker stroke effect
+   ============================================================ */
+.hero-title {
+  font-family: 'Permanent Marker', cursive;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* Animated marker underline */
+.marker-underline {
+  position: relative;
+  display: inline-block;
+}
+.marker-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: -4px;
+  right: -4px;
+  height: 12px;
+  background: var(--marker-yellow);
+  z-index: -1;
+  transform: rotate(-1deg) scaleX(0);
+  transform-origin: left;
+  animation: markerDraw 0.8s ease 0.6s forwards;
+  border-radius: 2px;
+}
+@keyframes markerDraw {
+  to { transform: rotate(-1deg) scaleX(1); }
+}
+
+.marker-underline-pink::after  { background: #ffb3c6; animation-delay: 0.8s; }
+.marker-underline-green::after { background: #b7f5d8; animation-delay: 1.0s; }
+.marker-underline-blue::after  { background: #b3d9ff; animation-delay: 0.7s; }
+
+/* Typewriter cursor blink */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.cursor { animation: blink 1s step-end infinite; }
+
+/* Hero badge pulse */
+@keyframes badgePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.4); }
+  50%       { box-shadow: 0 0 0 8px rgba(255, 107, 53, 0); }
+}
+.badge-pulse { animation: badgePulse 2s ease-in-out infinite; }
+
+/* Floating doodle elements in hero */
+@keyframes floatA {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50%       { transform: translateY(-14px) rotate(5deg); }
+}
+@keyframes floatB {
+  0%, 100% { transform: translateY(0) rotate(8deg); }
+  50%       { transform: translateY(-10px) rotate(-4deg); }
+}
+@keyframes floatC {
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  50%       { transform: translateY(-8px) rotate(10deg) scale(1.1); }
+}
+.float-a { animation: floatA 3.5s ease-in-out infinite; }
+.float-b { animation: floatB 4.2s ease-in-out infinite; }
+.float-c { animation: floatC 5s ease-in-out infinite; }
+
+/* Scribble line draw animation */
+@keyframes drawLine {
+  from { stroke-dashoffset: 300; }
+  to   { stroke-dashoffset: 0; }
+}
+.draw-line {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  animation: drawLine 1.2s ease 0.4s forwards;
+}
+
+/* Navbar scroll shadow */
+.nav-scrolled {
+  box-shadow: 0 4px 0 0 var(--ink);
+}
+

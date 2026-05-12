@@ -4,7 +4,7 @@ import { Footer } from "@/components/shared/Footer";
 import {
   Compass, Clock, Map, Swords, BookOpen, Zap, Users,
   ArrowRight, Sparkles, Target, Pen, CheckCircle2, XCircle,
-  Rocket, Star, Zap as Lightning,
+  Rocket,
 } from "lucide-react";
 
 /* ------------------------------------------------------------------ */
@@ -98,72 +98,198 @@ export default function HomePage() {
       <main className="flex-1 relative z-10">
 
         {/* ===== HERO ===== */}
-        <section className="relative max-w-5xl mx-auto px-6 pt-16 pb-20 text-center overflow-hidden">
+        <section className="relative max-w-6xl mx-auto px-5 pt-12 pb-20 overflow-hidden">
 
-          {/* Floating doodles */}
-          <span className="doodle absolute top-8 left-8 text-4xl" style={{ animationDelay: "0s" }}>⭐</span>
-          <span className="doodle absolute top-16 right-12 text-3xl" style={{ animationDelay: "0.8s" }}>✦</span>
-          <span className="doodle absolute bottom-12 left-16 text-2xl" style={{ animationDelay: "1.2s" }}>♥</span>
-          <span className="doodle absolute top-24 right-6 text-5xl" style={{ animationDelay: "0.4s" }}>⚡</span>
-          <span className="doodle absolute bottom-8 right-20 text-3xl" style={{ animationDelay: "1.6s" }}>✿</span>
+          {/* ── Background doodle decorations ── */}
+          {/* Top-left cluster */}
+          <span className="float-a absolute top-6 left-4 text-5xl select-none pointer-events-none opacity-70">⭐</span>
+          <span className="float-b absolute top-20 left-12 text-2xl select-none pointer-events-none opacity-50">✦</span>
+          <div className="absolute top-8 left-28 w-10 h-10 rounded-full border-[3px] border-dashed border-marker-pink opacity-30 doodle-spin" />
 
-          {/* Decorative circles */}
-          <div className="absolute top-10 right-24 w-12 h-12 rounded-full border-3 border-dashed border-marker-pink opacity-40 doodle-spin" />
-          <div className="absolute bottom-16 left-24 w-8 h-8 rounded-full border-2 border-dashed border-marker-blue opacity-30 doodle-spin" style={{ animationDuration: "18s" }} />
+          {/* Top-right cluster */}
+          <span className="float-c absolute top-4 right-8 text-4xl select-none pointer-events-none opacity-60">⚡</span>
+          <span className="float-a absolute top-24 right-4 text-3xl select-none pointer-events-none opacity-50" style={{ animationDelay: "1s" }}>✿</span>
+          <div className="absolute top-12 right-28 w-14 h-14 rounded-full border-[3px] border-dashed border-marker-blue opacity-25 doodle-spin" style={{ animationDuration: "20s" }} />
 
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 sketch-badge bg-card-yellow mb-8 fade-up">
-            <Sparkles className="w-4 h-4 text-marker-orange" />
-            <span>Built for Colosseum × SagaPad Hackathon</span>
+          {/* Bottom decorations */}
+          <span className="float-b absolute bottom-10 left-8 text-3xl select-none pointer-events-none opacity-40" style={{ animationDelay: "0.5s" }}>♥</span>
+          <span className="float-c absolute bottom-6 right-12 text-2xl select-none pointer-events-none opacity-50" style={{ animationDelay: "1.5s" }}>◆</span>
+
+          {/* ── Two-column layout ── */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+
+            {/* LEFT — Text */}
+            <div className="text-left">
+
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 sketch-badge bg-card-yellow badge-pulse mb-6 fade-up">
+                <Sparkles className="w-4 h-4 text-marker-orange" />
+                <span className="font-hand text-sm">Colosseum × SagaPad Hackathon</span>
+                <span className="w-2 h-2 rounded-full bg-marker-green animate-pulse" />
+              </div>
+
+              {/* Main headline — Permanent Marker font */}
+              <h1 className="hero-title text-ink mb-5 fade-up delay-1">
+                <span className="block text-[2.8rem] sm:text-[3.6rem] md:text-[4.2rem] leading-[1.05]">
+                  You Built It.
+                </span>
+                <span className="block text-[2.8rem] sm:text-[3.6rem] md:text-[4.2rem] leading-[1.05] mt-1">
+                  Now{" "}
+                  <span className="marker-underline marker-underline-blue relative">
+                    Make Noise.
+                  </span>
+                </span>
+              </h1>
+
+              {/* Sub-headline */}
+              <p
+                className="text-[1.35rem] sm:text-[1.6rem] text-marker-orange mb-3 fade-up delay-2"
+                style={{ fontFamily: "'Caveat', cursive", fontWeight: 600 }}
+              >
+                Narrative Strategy. Not Just Content.
+              </p>
+
+              {/* Body */}
+              <p className="font-body text-base sm:text-lg text-pencil max-w-lg mb-8 leading-relaxed fade-up delay-3">
+                AI-powered narrative engine for Solana hackathon builders.{" "}
+                <span className="highlight font-bold text-ink">7 inputs</span> →{" "}
+                complete war room in{" "}
+                <span className="highlight-green font-bold text-ink">60 seconds</span>.
+                Built on Solana. Powered by Gemini AI.
+              </p>
+
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row items-start gap-3 mb-10 fade-up delay-4">
+                <Link
+                  href="/forge"
+                  className="btn-sketch btn-primary-sketch text-xl py-3 px-8 group"
+                >
+                  <Rocket className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+                  Start Forging
+                  <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
+                </Link>
+                <Link
+                  href="/#how"
+                  className="btn-sketch btn-ghost-sketch text-xl py-3 px-7"
+                >
+                  See How It Works
+                </Link>
+              </div>
+
+              {/* Trust signals */}
+              <div className="flex flex-wrap items-center gap-4 fade-up delay-5">
+                {[
+                  { icon: "✓", text: "No signup required" },
+                  { icon: "✓", text: "Free to use" },
+                  { icon: "✓", text: "60-second generation" },
+                ].map((t) => (
+                  <span key={t.text} className="inline-flex items-center gap-1.5 font-body text-sm text-pencil">
+                    <span className="text-marker-green font-bold">{t.icon}</span>
+                    {t.text}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* RIGHT — Visual card stack */}
+            <div className="relative h-[420px] hidden lg:block fade-up delay-2">
+
+              {/* Decorative SVG scribble lines */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 400 420" fill="none">
+                <path
+                  d="M20 380 Q100 340 180 360 T340 340"
+                  stroke="#ff6b35"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  className="draw-line"
+                  opacity="0.3"
+                />
+                <path
+                  d="M60 40 Q140 20 220 50 T380 30"
+                  stroke="#ffd60a"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  className="draw-line"
+                  opacity="0.4"
+                />
+              </svg>
+
+              {/* Card 1 — Archetype reveal (back) */}
+              <div
+                className="absolute top-8 right-4 w-64 sketch-card bg-card-purple p-5"
+                style={{ transform: "rotate(6deg)" }}
+              >
+                <p className="font-hand text-xs text-pencil mb-1">Your Archetype</p>
+                <p className="hero-title text-2xl text-ink">The Use-Case Pioneer 🧭</p>
+                <p className="font-body text-xs text-pencil mt-2">
+                  &ldquo;Why has nobody done this?&rdquo; is your story.
+                </p>
+              </div>
+
+              {/* Card 2 — One Truth (middle) */}
+              <div
+                className="absolute top-28 left-6 w-72 sketch-card bg-card-yellow p-5 float-b"
+                style={{ transform: "rotate(-3deg)" }}
+              >
+                <p className="font-hand text-xs text-pencil mb-1">✦ Your One Truth</p>
+                <p
+                  className="text-lg text-ink italic leading-snug"
+                  style={{ fontFamily: "'Caveat', cursive", fontWeight: 600 }}
+                >
+                  &ldquo;We are building what SWIFT forgot.&rdquo;
+                </p>
+              </div>
+
+              {/* Card 3 — Week Zero (front) */}
+              <div
+                className="absolute bottom-6 right-8 w-68 sketch-card bg-card-green p-5 float-a"
+                style={{ transform: "rotate(2deg)" }}
+              >
+                <p className="font-hand text-xs text-pencil mb-2">⏰ Hour 0–6 Action</p>
+                <p className="font-body text-sm text-ink">
+                  Post your origin story. First post live before momentum window closes.
+                </p>
+                <div className="mt-3 flex items-center gap-2">
+                  <span className="sketch-badge bg-white text-xs">Copy-paste ready</span>
+                </div>
+              </div>
+
+              {/* Card 4 — Rivalry (small, top-left) */}
+              <div
+                className="absolute top-4 left-2 w-52 sketch-card bg-card-pink p-4 float-c"
+                style={{ transform: "rotate(-5deg)" }}
+              >
+                <p className="font-hand text-xs text-pencil mb-1">⚔️ Rivalry Radar</p>
+                <p className="font-body text-xs text-ink">
+                  <span className="line-through opacity-50">Generic DeFi pitch</span>
+                  <br />
+                  <span className="text-marker-green font-bold">→ Freelance Infrastructure</span>
+                </p>
+              </div>
+            </div>
           </div>
 
-          {/* Headline */}
-          <h1 className="font-comic text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-ink leading-tight mb-4 fade-up delay-1">
-            You Built It.
-            <br />
-            <span className="squiggle squiggle-yellow">We&apos;ll Ink</span>{" "}
-            The Story.
-          </h1>
-
-          {/* Subheadline */}
-          <p className="font-hand text-xl sm:text-2xl text-marker-orange mb-3 fade-up delay-2">
-            Narrative Strategy. Not Just Content.
-          </p>
-
-          <p className="font-body text-base sm:text-lg text-pencil max-w-2xl mx-auto mb-10 leading-relaxed fade-up delay-3">
-            AI-powered narrative engine for Solana hackathon builders.{" "}
-            <span className="highlight">7 inputs</span> →{" "}
-            complete war room in 60 seconds.{" "}
-            Built on Solana. Powered by Gemini AI.
-          </p>
-
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14 fade-up delay-4">
-            <Link href="/forge" className="btn-sketch btn-primary-sketch text-xl py-3 px-8">
-              <Rocket className="w-5 h-5" />
-              Start Forging →
-            </Link>
-            <Link href="/#how" className="btn-sketch btn-ghost-sketch text-xl py-3 px-8">
-              See How It Works
-            </Link>
-          </div>
-
-          {/* Stats row */}
-          <div className="flex flex-wrap items-center justify-center gap-4 fade-up delay-5">
+          {/* ── Stats bar (full width below) ── */}
+          <div className="mt-14 flex flex-wrap items-center justify-center gap-4 fade-up delay-5">
             {[
               { val: "7", label: "inputs", bg: "bg-card-yellow" },
               { val: "7", label: "strategy sections", bg: "bg-card-pink" },
               { val: "<60s", label: "generation time", bg: "bg-card-blue" },
               { val: "100%", label: "copy-paste ready", bg: "bg-card-green" },
             ].map((s) => (
-              <div key={s.label} className={`stat-card ${s.bg} min-w-[110px]`}>
-                <p className="font-comic text-3xl text-ink">{s.val}</p>
+              <div key={s.label} className={`stat-card ${s.bg} min-w-[120px]`}>
+                <p
+                  className="text-3xl text-ink"
+                  style={{ fontFamily: "'Permanent Marker', cursive" }}
+                >
+                  {s.val}
+                </p>
                 <p className="font-body text-xs text-pencil mt-0.5">{s.label}</p>
               </div>
             ))}
           </div>
 
-          <p className="font-hand text-pencil text-sm mt-10 bounce-slow inline-block">
+          <p className="font-hand text-pencil text-sm mt-10 bounce-slow inline-block w-full text-center">
             scroll down ↓
           </p>
         </section>
