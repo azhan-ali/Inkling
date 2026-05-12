@@ -112,7 +112,7 @@ export default function HomePage() {
       <main className="flex-1 relative z-10">
 
         {/* ===== HERO — full viewport height, everything above the fold ===== */}
-        <section className="relative w-full min-h-[calc(100vh-70px)] flex flex-col items-center justify-center px-4 sm:px-6 py-8 text-center overflow-hidden">
+        <section className="relative w-full min-h-[calc(100vh-68px)] flex flex-col items-center justify-center px-4 sm:px-6 py-4 text-center overflow-hidden">
 
           {/* ── Floating doodles ── */}
           <span className="float-a absolute top-6 left-6 text-4xl select-none pointer-events-none opacity-60 hidden sm:block">⭐</span>
@@ -123,7 +123,7 @@ export default function HomePage() {
           <div className="absolute bottom-20 left-32 w-8 h-8 rounded-full border-2 border-dashed border-marker-blue opacity-20 doodle-spin hidden sm:block" style={{ animationDuration: "20s" }} />
 
           {/* ── All content in one max-width container ── */}
-          <div className="w-full max-w-5xl mx-auto flex flex-col items-center gap-5">
+          <div className="w-full max-w-5xl mx-auto flex flex-col items-center gap-3.5">
 
             {/* Badge */}
             <div className="inline-flex items-center gap-2 sketch-badge bg-card-yellow badge-pulse fade-up">
